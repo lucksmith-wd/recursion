@@ -27,15 +27,16 @@ function mergeSort(arr) {
   let left = mergeSort(arr.slice(0, Math.ceil(arr.length / 2)));
   let right = mergeSort(arr.slice(Math.ceil(arr.length / 2)));
   let merged = [];
+  let leftIndex = 0, rightIndex = 0
   while (true) {
-    if (left.length === 0) return merged.concat(right);
-    if (right.length === 0) return merged.concat(left)
-    if (left[0] <= right[0]) merged.push(left.shift())
-    else merged.push(right.shift())
+    if (leftIndex === left.length) return merged.concat(right.slice(rightIndex));
+    if (rightIndex === right.length) return merged.concat(left.slice(leftIndex));
+    if (left[leftIndex] <= right[rightIndex]) merged.push(left[leftIndex++]);
+    else merged.push(right[rightIndex++]);
   }
 }
 
-const original = [8, 3, 9, 1, 10, 11, 3];
+const original = [3, 4, 2, 9, 11, 3, 5, 90, 2];
 const sorted = mergeSort(original);
 console.log(original);
 console.log(sorted);
