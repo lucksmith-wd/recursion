@@ -1,5 +1,7 @@
 // Assignment 1 - Fibonacci numbers
 function fibs(n) {
+  if (n <= 0) return 'Invalid number of elements';
+  if (n === 1) return [0];
   let arr = [0, 1];
   for (let i = 2; i < n; i++) {
     arr.push(arr[arr.length - 2] + arr[arr.length - 1])
@@ -8,6 +10,8 @@ function fibs(n) {
 }
 
 function fibsRec(n, arr = [0, 1]) {
+  if (n <= 0) return 'Invalid number of elements';
+  if (n === 1) return [0];
   if (arr.length === n) return arr;
   arr.push(arr[arr.length - 2] + arr[arr.length - 1]);
   return fibsRec(n, arr);
